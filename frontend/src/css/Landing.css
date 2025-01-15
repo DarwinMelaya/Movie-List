@@ -1,0 +1,237 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
+
+.landing {
+  min-height: 100vh;
+  background-color: #000;
+  position: relative;
+}
+
+.hero {
+  height: 100vh;
+  background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.9) 0,
+      rgba(0, 0, 0, 0.5) 40%,
+      rgba(0, 0, 0, 0.9) 100%
+    ),
+    url('https://assets.nflxext.com/ffe/siteui/vlv3/9134db96-10d6-4a64-a619-a21da22f8999/a449fabb-05e4-4c8a-b062-b0bec7d03085/US-en-20240115-trifectadaily-perspective_alpha_website_large.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 7.4rem;
+  background: linear-gradient(180deg, transparent, #000);
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  animation: fadeInUp 1s ease-out;
+}
+
+.hero h1 {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  font-weight: 900;
+  background: linear-gradient(45deg, #e50914, #ff5f5f);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+.hero-description {
+  font-size: 1.2rem;
+  color: #e5e5e5;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  background-color: #e50914;
+  color: white;
+  padding: 1rem 2.5rem;
+  font-size: 1.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(229, 9, 20, 0.3);
+}
+
+.cta-button .arrow {
+  margin-left: 10px;
+  transition: transform 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #f40612;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(229, 9, 20, 0.4);
+}
+
+.cta-button:hover .arrow {
+  transform: translateX(5px);
+}
+
+.features {
+  padding: 6rem 0;
+  background: linear-gradient(to bottom, #000, #141414);
+  position: relative;
+}
+
+.feature {
+  max-width: 1100px;
+  margin: 0 auto 4rem;
+  padding: 3rem 20px;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.feature:last-child {
+  margin-bottom: 0;
+}
+
+.feature-icon {
+  font-size: 3rem;
+  color: #e50914;
+  background: rgba(229, 9, 20, 0.1);
+  padding: 2rem;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(229, 9, 20, 0.2);
+}
+
+.feature-text {
+  flex: 1;
+}
+
+.feature h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(45deg, #ffffff, #e5e5e5);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.feature p {
+  font-size: 1.2rem;
+  color: #e5e5e5;
+  line-height: 1.6;
+}
+
+.landing-footer {
+  text-align: center;
+  padding: 2rem;
+  background-color: rgba(0, 0, 0, 0.9);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.copyright {
+  color: #737373;
+  font-size: 0.9rem;
+}
+
+.creator {
+  color: #e50914;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero h2 {
+    font-size: 1.5rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  .cta-button {
+    font-size: 1.2rem;
+    padding: 0.8rem 2rem;
+  }
+
+  .feature {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem 20px;
+  }
+
+  .feature h2 {
+    font-size: 2rem;
+  }
+
+  .feature p {
+    font-size: 1rem;
+  }
+
+  .feature-icon {
+    font-size: 2rem;
+    padding: 1.5rem;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+/* Add smooth scrolling to the page */
+html {
+  scroll-behavior: smooth;
+}
