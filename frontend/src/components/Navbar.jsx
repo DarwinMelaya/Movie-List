@@ -18,7 +18,9 @@ const Navbar = () => {
   return (
     <nav className={`navbar ${isScrolled ? "scrolled" : ""}`}>
       <div className="navbar-brand">
-        <Link to="/">MovieFlix</Link>
+        <Link to="/">
+          Movie<span style={{ color: "#e50914" }}>Flix</span>
+        </Link>
       </div>
       <div className="navbar-links">
         <Link
