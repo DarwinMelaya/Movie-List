@@ -1,9 +1,12 @@
 import "../css/MovieCard.css";
 import { useMovieContext } from "../contexts/MovieContext";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const MovieCard = ({ movie }) => {
   const { addToFavorites, removeFromFavorites, isFavorite } = useMovieContext();
   const favorite = isFavorite(movie.id);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   function onFavoriteClick(e) {
     e.preventDefault();
@@ -15,8 +18,18 @@ const MovieCard = ({ movie }) => {
     }
   }
 
+  const handleClick = () => {
+    navigate(`/movie/${movie.id}`);
+  };
+
+  const handleBack = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    navigate(-1);
+  };
+
   return (
-    <div className="movie-card">
+    <div className="movie-card" onClick={handleClick}>
       <div className="movie-poster">
         <img
           src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
@@ -24,6 +37,13 @@ const MovieCard = ({ movie }) => {
           loading="lazy"
         />
         <div className="movie-overlay">
+          <button
+            className="back-btn"
+            onClick={handleBack}
+            aria-label="Go back"
+          >
+            ←
+          </button>
           <button
             className={`favorite-btn ${favorite ? "active" : ""}`}
             onClick={onFavoriteClick}

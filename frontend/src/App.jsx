@@ -5,6 +5,7 @@ import Favorites from "./pages/Fovorites";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import { MovieProvider } from "./contexts/MovieContext";
+import MovieDetails from "./pages/MovieDetails";
 
 function App() {
   return (
@@ -39,6 +40,15 @@ function App() {
                 <main className="main-content">
                   <Favorites />
                 </main>
+              </>
+            }
+          />
+          <Route
+            path="/movie/:id"
+            element={
+              <>
+                <Navbar />
+                <MovieDetails />
               </>
             }
           />
