@@ -1,6 +1,11 @@
 import MovieCard from "../components/MovieCard";
+import Categories from "../components/Categories";
 import { useState, useEffect } from "react";
-import { searchMovies, getPopularMovies } from "../services/api";
+import {
+  searchMovies,
+  getPopularMovies,
+  getMoviesByCategory,
+} from "../services/api";
 import "../css/Home.css";
 
 const Home = () => {
@@ -8,21 +13,30 @@ const Home = () => {
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
   useEffect(() => {
-    const loadPopularMovies = async () => {
-      try {
-        const popularMovies = await getPopularMovies();
-        setMovies(popularMovies);
-      } catch (err) {
-        console.log(err);
-        setError("Failed to load popular movies...");
-      } finally {
-        setLoading(false);
+    loadMovies();
+  }, [selectedCategory]);
+
+  const loadMovies = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      let movieData;
+      if (selectedCategory) {
+        movieData = await getMoviesByCategory(selectedCategory);
+      } else {
+        movieData = await getPopularMovies();
       }
-    };
-    loadPopularMovies();
-  }, []);
+      setMovies(movieData);
+    } catch (err) {
+      console.error(err);
+      setError("Failed to load movies...");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleSearch = async (e) => {
     e.preventDefault();
@@ -31,6 +45,7 @@ const Home = () => {
 
     setLoading(true);
     setError(null);
+    setSelectedCategory(null);
 
     try {
       const searchResults = await searchMovies(searchQuery);
@@ -41,6 +56,11 @@ const Home = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleCategorySelect = (categoryId) => {
+    setSelectedCategory(categoryId);
+    setSearchQuery("");
   };
 
   return (
@@ -66,11 +86,16 @@ const Home = () => {
         </form>
       </div>
 
+      <Categories
+        onCategorySelect={handleCategorySelect}
+        selectedCategory={selectedCategory}
+      />
+
       {error && <div className="error-message">{error}</div>}
 
       <div className="content-container">
         {loading ? (
-          <div className="loading">Searching for movies...</div>
+          <div className="loading">Loading movies...</div>
         ) : (
           <div className="movies-grid">
             {movies.map((movie) => (

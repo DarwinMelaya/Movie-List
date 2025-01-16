@@ -52,14 +52,19 @@ const MovieDetails = () => {
               <img
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                 alt={movie.title}
+                loading="lazy"
               />
             </div>
             <div className="movie-info">
               <h1>{movie.title}</h1>
               <div className="movie-meta">
-                <span>{movie.release_date?.split("-")[0]}</span>
-                <span>{movie.runtime} min</span>
-                <span>{movie.vote_average.toFixed(1)} ⭐</span>
+                <span className="meta-item">
+                  {movie.release_date?.split("-")[0]}
+                </span>
+                <span className="meta-item">{movie.runtime} min</span>
+                <span className="meta-item">
+                  {movie.vote_average.toFixed(1)} ⭐
+                </span>
               </div>
               <p className="overview">{movie.overview}</p>
               <div className="genres">

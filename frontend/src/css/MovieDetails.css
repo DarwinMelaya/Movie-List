@@ -95,7 +95,22 @@
   background: #831010;
 }
 
+@media (max-width: 1024px) {
+  .movie-details-content {
+    grid-template-columns: 250px 1fr;
+    gap: 2rem;
+  }
+
+  .movie-info h1 {
+    font-size: 2.5rem;
+  }
+}
+
 @media (max-width: 768px) {
+  .backdrop-overlay {
+    padding: 4rem 4% 2rem;
+  }
+
   .movie-details-content {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -108,5 +123,62 @@
 
   .movie-info h1 {
     font-size: 2rem;
+    text-align: center;
+  }
+
+  .movie-meta {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .meta-item {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+  }
+
+  .overview {
+    text-align: center;
+    font-size: 1rem;
+  }
+
+  .genres {
+    justify-content: center;
+  }
+
+  .favorite-btn {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .backdrop-overlay {
+    padding: 2rem 4% 1rem;
+  }
+
+  .movie-info h1 {
+    font-size: 1.5rem;
+  }
+
+  .movie-meta {
+    font-size: 0.9rem;
+  }
+
+  .overview {
+    font-size: 0.9rem;
+  }
+
+  .genre-tag {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .favorite-btn {
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
   }
 }

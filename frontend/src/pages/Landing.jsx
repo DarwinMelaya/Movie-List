@@ -6,7 +6,7 @@ const Landing = () => {
     <div className="landing">
       <div className="hero">
         <div className="hero-content">
-          <h1>Welcome to MovieFlix</h1>
+          <h1>Welcome to Mobiflix</h1>
           <h2>Your Ultimate Movie Streaming Destination</h2>
           <p className="hero-description">
             Discover thousands of movies, from classics to the latest releases.

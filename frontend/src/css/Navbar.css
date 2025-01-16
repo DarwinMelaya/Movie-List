@@ -64,6 +64,55 @@
   color: #ffffff;
 }
 
+.burger-menu {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 102;
+}
+
+.burger-bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+
+.burger-bar::before,
+.burger-bar::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  transition: all 0.3s ease-in-out;
+}
+
+.burger-bar::before {
+  transform: translateY(-8px);
+}
+
+.burger-bar::after {
+  transform: translateY(8px);
+}
+
+/* Burger menu animation */
+.burger-bar.open {
+  background: transparent;
+}
+
+.burger-bar.open::before {
+  transform: rotate(45deg);
+}
+
+.burger-bar.open::after {
+  transform: rotate(-45deg);
+}
+
 @media (max-width: 768px) {
   .navbar {
     padding: 1rem;
@@ -81,5 +130,34 @@
 
   .nav-link {
     padding: 0.5rem;
+  }
+
+  .burger-menu {
+    display: block;
+  }
+
+  .navbar-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 250px;
+    background-color: rgba(20, 20, 20, 0.95);
+    backdrop-filter: blur(10px);
+    flex-direction: column;
+    padding: 5rem 2rem;
+    transition: right 0.3s ease-in-out;
+    z-index: 101;
+  }
+
+  .navbar-links.open {
+    right: 0;
+  }
+
+  .nav-link {
+    font-size: 1.2rem;
+    padding: 1rem;
+    width: 100%;
+    text-align: center;
   }
 }
